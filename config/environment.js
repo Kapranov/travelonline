@@ -6,45 +6,61 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    firebase: {
+      apiKey: 'xyz',
+      authDomain: 'YOUR-FIREBASE-APP.firebaseapp.com',
+      databaseURL: 'https://YOUR-FIREBASE-APP.firebaseio.com',
+      projectId: "YOUR-FIREBASE-APP-ID",
+      storageBucket: 'YOUR-FIREBASE-APP.appspot.com',
+      messagingSenderId: "YOUR-MESSAGE-SENDER-ID"
+    },
+    torii: { sessionServiceName: 'session' },
+    contentSecurityPolicy: {
+      // 'default-src': "'none'",
+      // 'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+      // 'font-src': "'self'",
+      // 'connect-src': "'self'",
+      // 'img-src': "'self'",
+      // 'report-uri':"'localhost'",
+      // 'style-src': "'self' 'unsafe-inline'",
+      // 'frame-src': "'none'"
+      'script-src': "'self' 'unsafe-eval' apis.google.com",
+      'frame-src': "'self' https://*.firebaseapp.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    },
     EmberENV: {
-      FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
-      },
-      EXTEND_PROTOTYPES: {
-        // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
+      FEATURES: { },
+      EXTEND_PROTOTYPES: { Date: false }
     },
 
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+    APP: { },
+
+    moment: {
+      includeTimezone: 'all',
+      outputFormat: 'L',
+      allowEmpty: false,
+      includeLocales: true
+      //includeLocales: ['en', 'ru', 'uk']
     }
   };
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_RESOLVER = false;
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_TRANSITIONS = false;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
   }
 
   if (environment === 'test') {
-    // Testem prefers this...
     ENV.locationType = 'none';
-
-    // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
   }
 
   return ENV;
