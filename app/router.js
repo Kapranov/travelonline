@@ -7,8 +7,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('index', { path: '/' });
-  this.route('forms');
+  this.route('forms', { path: '/' });
   this.route('demo', { path: 'components' }, function() {
     this.route('input');
     this.route('select');
