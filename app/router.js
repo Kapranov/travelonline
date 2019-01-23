@@ -7,6 +7,14 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('index', { path: '/' });
+  this.route('forms');
+  this.route('demo', { path: 'components' }, function() {
+    this.route('input');
+    this.route('select');
+    this.route('autocomplete');
+  });
+
 });
 
 export default Router;

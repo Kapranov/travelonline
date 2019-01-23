@@ -10,3 +10,6 @@
 * `Kernel`: Linux 4.9.0-8-amd64
 
 ### 22 Jan 2019 by Oleg G.Kapranov
+
+[1]: http://miguelcobain.github.io/ember-paper/
+[2]: https://github.com/miguelcobain/ember-paper
